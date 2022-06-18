@@ -26,7 +26,21 @@ def sierpinski():
 
 sierpinski = sierpinski()
 
+def fern():
+  pic = np.ones((128,128), dtype = np.float32)
+  mat1 = np.array([[0, 0, 0], 
+                   [0.16, 0, 0]])
+  mat2 = np.array([[0.85, 0.04, 0], 
+                   [-0.04, 0.85, 1.6]])
+  mat3 = np.array([[0.2, -0.26, 0], 
+                   [0.23, 0.22, 1.6]])
+  mat4 = np.array([[-0.15, 0.28, 0], 
+                   [0.26, 0.24, 0.44]])
+  for _ in range(10):
+    pic = w(pic, [mat1, mat2, mat3, mat4])
+  return pic
 
+fern = fern()
 
 def random_affine() -> np.ndarray:
     e, f = np.random.uniform(0., 1., 2)
@@ -42,3 +56,5 @@ def random_affine() -> np.ndarray:
 def det_abs(mat):
   return np.abs(mat[0, 0] * mat[1, 1] - mat[0, 1] * mat[1, 0])
 
+cv2.imshow("pic", fern)
+cv2.waitKey(0)
